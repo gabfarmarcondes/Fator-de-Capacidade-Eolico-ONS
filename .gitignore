@@ -1,2 +1,9 @@
-\venv
-\data
+venv/
+notes/
+__pycache__/
+.ipynb_checkpoints/
+
+# dados brutos (grandes e baixáveis de novo pelos scripts)
+data/ons_fator_capacidade_*/
+data/raw/
+openmeteo_era5_vento100m_20pontos.json

@@ -1,0 +1,8 @@
+pandas>=2.2
+pyarrow>=17
+numpy>=1.26
+requests>=2.31
+holidays>=0.60
+scikit-learn>=1.5
+matplotlib>=3.8
+ipykernel>=6.29

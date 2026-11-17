@@ -1,0 +1,72 @@
+{
+  "periodo": [
+    "2022-01-01",
+    "2026-10-31"
+  ],
+  "python": "3.14.4",
+  "pandas": "3.1.1",
+  "leitura_ons": {
+    "arquivos": 58,
+    "linhas_lidas": 8791056,
+    "texto_nao_numerico": 0,
+    "linhas_eolicas_ne": 5876256,
+    "usinas_conjuntos": 190
+  },
+  "limpeza_ons": {
+    "instantes_arredondados": 0,
+    "fora_do_periodo": 0,
+    "duplicados_removidos": 0,
+    "invalidos_geracao_ausente": 552,
+    "invalidos_capacidade_ausente_ou_zero": 3840,
+    "invalidos_geracao_negativa": 6,
+    "invalidos_geracao_acima_de_110pct_da_capacidade": 677,
+    "registros_invalidos": 4523,
+    "registros_validos": 5871733,
+    "fc_ons_difere_do_calculado": 0
+  },
+  "serie_horaria": {
+    "horas": 42360,
+    "horas_sem_dado": 0,
+    "cobertura_min": 0.9725
+  },
+  "vento": {
+    "horas_por_ponto": 42360,
+    "vento_ausente": 0,
+    "vento_fora_da_faixa_0_50ms": 0,
+    "vento_ausente_apos_interpolacao": 0
+  },
+  "pontos_clima": {
+    "n_pontos": 20,
+    "distancia_max_km": 113.9,
+    "capacidade_ate_50km": 0.933
+  },
+  "base_final": {
+    "dias": 1765,
+    "dias_qualidade_ok": 1765,
+    "fc_min": 0.034,
+    "fc_max": 0.6877,
+    "colunas": [
+      "data",
+      "ano",
+      "mes",
+      "dia_semana",
+      "fc",
+      "geracao_mwmed",
+      "capacidade_mw",
+      "n_usinas",
+      "horas_com_dado",
+      "cobertura",
+      "qualidade_ok",
+      "vento_100m_ms",
+      "vento_100m_cubo",
+      "vento_100m_desvio_entre_pontos",
+      "pontos_clima",
+      "fim_de_semana",
+      "feriado_nacional",
+      "nome_feriado",
+      "carnaval",
+      "dia_nao_util",
+      "safra_ventos"
+    ]
+  }
+}

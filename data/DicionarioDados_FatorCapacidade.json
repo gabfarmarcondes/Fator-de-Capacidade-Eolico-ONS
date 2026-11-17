@@ -1,0 +1,89 @@
+{
+    "titulo": "DicionarioDados_FatorCapacidade",
+    "dicionario_simplificado": [
+        {
+            "descricao": "Identificador do subsistema",
+            "codigo": "id_subsistema"
+        },
+        {
+            "descricao": "Nome do subsistema",
+            "codigo": "nom_subsistema"
+        },
+        {
+            "descricao": "Sigla do Estado",
+            "codigo": "id_estado"
+        },
+        {
+            "descricao": "Nome do Estado",
+            "codigo": "nom_estado"
+        },
+        {
+            "descricao": "Código do ponto de conexão da usina/conjunto",
+            "codigo": "cod_pontoconexao"
+        },
+        {
+            "descricao": "Nome do ponto de conexão da usina/conjunto",
+            "codigo": "nom_pontoconexao"
+        },
+        {
+            "descricao": "Localização da usina/conjunto O conteúdo está disponível apenas para Usinas da região Nordeste",
+            "codigo": "nom_localizacao"
+        },
+        {
+            "descricao": "Latitude da usina/conjunto",
+            "codigo": "val_latitudesecoletora"
+        },
+        {
+            "descricao": "Longitude da usina/conjunto",
+            "codigo": "val_longitudesecoletora"
+        },
+        {
+            "descricao": "Latitude do Ponto de Conexão",
+            "codigo": "val_latitudepontoconexao"
+        },
+        {
+            "descricao": "Longitude do Ponto de Conexão",
+            "codigo": "val_longitudepontoconexao"
+        },
+        {
+            "descricao": "Modalidade de operação",
+            "codigo": "nom_modalidadeoperacao"
+        },
+        {
+            "descricao": "Tipo da usina",
+            "codigo": "nom_tipousina"
+        },
+        {
+            "descricao": "Nome da usina/conjunto",
+            "codigo": "nom_usina_conjunto"
+        },
+        {
+            "descricao": "Data",
+            "codigo": "din_instante"
+        },
+        {
+            "descricao": "Identificador da usina ou conjunto no ONS",
+            "codigo": "id_ons"
+        },
+        {
+            "descricao": "Código Único do Empreendimento de Geração (CEG), estabelecido pela ANEEL",
+            "codigo": "ceg"
+        },
+        {
+            "descricao": "Geração Programada, em MWmed",
+            "codigo": "val_geracaoprogramada"
+        },
+        {
+            "descricao": "Geração Verificada, em MWmed",
+            "codigo": "val_geracaoverificada"
+        },
+        {
+            "descricao": "Capacidade instalada, em MW",
+            "codigo": "val_capacidadeinstalada"
+        },
+        {
+            "descricao": "Fator de capacidade, obtida pela relação entre a geração e a capacidade instalada",
+            "codigo": "val_fatorcapacidade"
+        }
+    ]
+}
