@@ -187,6 +187,22 @@ def vento_diario_pontos(v: pd.DataFrame) -> pd.DataFrame:
               .reset_index())
 
 
+def indice_vento_ne_horario(vento_h: pd.DataFrame, usinas_dia: pd.DataFrame,
+                            mapa: pd.DataFrame) -> pd.DataFrame:
+    """Vento horário do NE: média dos pontos ponderada pela capacidade do dia.
+
+    Usado na análise por hora do dia (etapa 3); não entra na base diária."""
+    cap_ponto = (usinas_dia.merge(mapa[["id_ons", "ponto_id"]], on="id_ons", how="inner")
+                           .groupby(["data", "ponto_id"])["capacidade_mw"].sum()
+                           .rename("peso_mw").reset_index())
+    x = (vento_h.assign(data=vento_h["din_instante"].dt.normalize())
+                .merge(cap_ponto, on=["data", "ponto_id"], how="inner")
+                .dropna(subset=["vento_100m_ms"]))
+    x["vento_x_peso"] = x["vento_100m_ms"] * x["peso_mw"]
+    h = x.groupby("din_instante")[["vento_x_peso", "peso_mw"]].sum()
+    return (h["vento_x_peso"] / h["peso_mw"]).rename("vento_100m_ms").reset_index()
+
+
 def indice_vento_ne(vento_pontos_dia: pd.DataFrame, usinas_dia: pd.DataFrame,
                     mapa: pd.DataFrame) -> pd.DataFrame:
     """Índice diário do NE: média dos pontos ponderada pela capacidade do dia."""

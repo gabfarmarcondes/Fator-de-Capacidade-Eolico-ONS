@@ -108,3 +108,29 @@ Não foram incluídos. O alvo é a fração da capacidade eólica efetivamente g
 | `pontos_clima` | pontos com usinas em operação no dia |
 | `fim_de_semana`, `feriado_nacional`, `nome_feriado`, `carnaval`, `dia_nao_util` | calendário |
 | `safra_ventos` | julho a outubro (H1) |
+
+## Investigação dos Dados e Consultas SQL
+
+O notebook `notebooks/03_investigacao_sql.ipynb` faz a análise exploratória com 7 consultas SQL (DuckDB, direto nos
+arquivos Parquet) e testa as hipóteses H1–H3. Ele usa as saídas da etapa 2, então rode antes
+`python -m src.build_dataset` se ainda não tiver a base.
+
+| Consulta | Pergunta | Recursos de SQL |
+| --- | --- | --- |
+| 1 | Em que meses o FC é maior? | agregação por ano e mês, CTE |
+| 2 | O FC está mudando com o tempo? | janelas `lag(…, 12)` e média móvel de 12 meses |
+| 3 | O mesmo vento gera o mesmo FC todo ano? | CTE por faixa de vento, `pivot` |
+| 4 | Em que horas o FC cai, e isso mudou? | CTE com FC esperado de 2022, resíduo por hora e ano |
+| 5 | O FC muda com o dia da semana? | CTE com FC esperado pelo vento |
+| 6 | Quais dias ficaram muito fora do esperado? | janela de ±15 dias (z-score) |
+| 7 | O Sul se comporta como o Nordeste? | leitura dos arquivos brutos do ONS, `lag` por região |
+
+**Principais resultados:**
+
+- **H1 confirmada:** na safra (jul–out) o FC é cerca de 0,14 maior que em jan–jun (IC 95%: 0,11 a 0,17).
+- **H2 confirmada:** só o vento explica cerca de 86% da variação do FC diário (R² de 0,86, IC 95%: 0,82 a 0,88).
+- **H3 confirmada para domingos, não para feriados:** o domingo fica cerca de 0,028 abaixo dos dias úteis da mesma semana com o mesmo vento. O efeito era zero em 2022 e cresce até cerca de −0,04 em 2026. Feriados em dia útil não mostram diferença significativa.
+- **Para o mesmo vento, o FC cai a cada ano,** sobretudo em dias de vento forte e entre 9h e 15h, quando a geração solar é maior. O padrão é compatível com o aumento dos cortes de geração (*curtailment*) no Nordeste a partir de agosto de 2023.
+- **O Sul é bem menos previsível que o Nordeste:** a correlação do FC com o dia anterior é de 0,48, contra 0,83 no NE.
+
+Como os dias vizinhos são parecidos (autocorrelação), os testes usam médias mensais, comparações dentro da mesma semana e bootstrap em blocos de 14 dias, em vez de tratar cada dia como independente.

@@ -6,3 +6,5 @@ holidays>=0.60
 scikit-learn>=1.5
 matplotlib>=3.8
 ipykernel>=6.29
+duckdb>=1.1
+scipy>=1.13
